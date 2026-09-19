@@ -113,6 +113,15 @@ class GeneralConfig:
         "phi4:14b",
         "deepseek-r1:8b",
         "deepseek-r1:14b",
+        # Small local models (~1B-2B parameters)
+        "gemma2:2b",
+        "qwen2:1.5b",
+        "qwen2.5:1.5b",
+        "qwen3:1.7b",
+        "deepseek-r1:1.5b",
+        "smollm2:1.7b",
+        "stablelm2:1.6b",
+        "tinyllama:1.1b",
         # ── Local Models (HuggingFace direct load) ───────────────────────────
         # Requires: pip install transformers torch accelerate
         # Pass HF token as API key for gated models
@@ -120,6 +129,14 @@ class GeneralConfig:
         "Qwen/Qwen2.5-14B-Instruct",
         "mistralai/Mistral-7B-Instruct-v0.3",
         "microsoft/Phi-4",
+        # Small local models (~1B-2B parameters)
+        "google/gemma-2-2b-it",
+        "Qwen/Qwen2.5-1.5B-Instruct",
+        "Qwen/Qwen3-1.7B",
+        "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+        "HuggingFaceTB/SmolLM2-1.7B-Instruct",
+        "stabilityai/stablelm-2-zephyr-1_6b",
+        "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     ])
     model_providers: Dict[str, str] = field(default_factory=lambda: {
         "claude-3-7-sonnet-20250219": "anthropic",
@@ -198,11 +215,28 @@ class GeneralConfig:
         "phi4:14b": "ollama",
         "deepseek-r1:8b": "ollama",
         "deepseek-r1:14b": "ollama",
+        # Small local models (~1B-2B parameters)
+        "gemma2:2b": "ollama",
+        "qwen2:1.5b": "ollama",
+        "qwen2.5:1.5b": "ollama",
+        "qwen3:1.7b": "ollama",
+        "deepseek-r1:1.5b": "ollama",
+        "smollm2:1.7b": "ollama",
+        "stablelm2:1.6b": "ollama",
+        "tinyllama:1.1b": "ollama",
         # ── Local Models (HuggingFace direct load) ───────────────────────────
         "Qwen/Qwen2.5-7B-Instruct": "huggingface",
         "Qwen/Qwen2.5-14B-Instruct": "huggingface",
         "mistralai/Mistral-7B-Instruct-v0.3": "huggingface",
         "microsoft/Phi-4": "huggingface",
+        # Small local models (~1B-2B parameters)
+        "google/gemma-2-2b-it": "huggingface",
+        "Qwen/Qwen2.5-1.5B-Instruct": "huggingface",
+        "Qwen/Qwen3-1.7B": "huggingface",
+        "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B": "huggingface",
+        "HuggingFaceTB/SmolLM2-1.7B-Instruct": "huggingface",
+        "stabilityai/stablelm-2-zephyr-1_6b": "huggingface",
+        "TinyLlama/TinyLlama-1.1B-Chat-v1.0": "huggingface",
     })
     providers: List[str] = field(default_factory=lambda: [
         "anthropic", "openai", "google", "together", "deepseek", "qwen", "grok",
