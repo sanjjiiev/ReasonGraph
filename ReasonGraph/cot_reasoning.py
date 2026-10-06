@@ -118,14 +118,49 @@ def parse_cot_response(response_text: str, question: str) -> CoTResponse:
         number = int(match.group(1))
         content = match.group(2).strip()
         steps.append(CoTStep(number=number, content=content))
+
+    plain_steps_parsed = False
+    if not steps:
+        plain_step_matches = list(re.finditer(
+            r'^\s*(?:step\s*)?(\d+)\s*[.):]\s*(.*)$',
+            response_text,
+            re.IGNORECASE | re.MULTILINE,
+        ))
+        plain_steps_parsed = bool(plain_step_matches)
+        for index, match in enumerate(plain_step_matches):
+            end = (
+                plain_step_matches[index + 1].start()
+                if index + 1 < len(plain_step_matches)
+                else len(response_text)
+            )
+            answer_header = re.search(
+                r'^\s*(?:final\s+)?answer\s*:',
+                response_text[match.end():end],
+                re.IGNORECASE | re.MULTILINE,
+            )
+            if answer_header:
+                end = match.end() + answer_header.start()
+            content = "\n".join(
+                part.strip()
+                for part in (match.group(2), response_text[match.end():end])
+                if part.strip()
+            )
+            if content:
+                steps.append(CoTStep(number=len(steps) + 1, content=content))
     
     # Extract answer
     answer_pattern = r'<answer>\s*(.*?)\s*</answer>'
     answer_match = re.search(answer_pattern, response_text, re.DOTALL)
+    if not answer_match:
+        answer_match = re.search(
+            r'^\s*(?:final\s+)?answer\s*:\s*(.+?)(?=\n\s*\n|\n\s*(?:step\s*)?\d+\s*[.):]|\Z)',
+            response_text,
+            re.IGNORECASE | re.MULTILINE | re.DOTALL,
+        )
     answer = answer_match.group(1).strip() if answer_match else None
     
-    # Sort steps by number
-    steps.sort(key=lambda x: x.number)
+    if not plain_steps_parsed:
+        steps.sort(key=lambda x: x.number)
     
     return CoTResponse(question=question, steps=steps, answer=answer)
 

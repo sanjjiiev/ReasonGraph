@@ -558,7 +558,8 @@ def run_benchmark():
                     g_nodes, g_edges = [], []
 
                 # 4. Evaluate
-                if g_nodes:
+                has_reasoning_nodes = any(node.get('id') != 'Q' for node in g_nodes)
+                if g_nodes and has_reasoning_nodes:
                     metrics = graph_evaluator.evaluate_graph(g_nodes, g_edges)
                     result_entry.update({
                         'rqi':      metrics['rqi'],
@@ -568,13 +569,16 @@ def run_benchmark():
                         'edge_scores': metrics.get('edge_scores', []),
                     })
                 else:
-                    result_entry['error'] = 'Graph extraction produced no nodes'
+                    result_entry['error'] = 'Graph extraction produced no reasoning or answer nodes'
 
             except Exception as model_err:
                 logger.error(f"Benchmark error for {model_name}: {model_err}")
                 result_entry['error'] = str(model_err)
 
             run_results.append(result_entry)
+            from api_base import HuggingFaceLocalAPI
+            if hasattr(HuggingFaceLocalAPI, 'free_memory'):
+                HuggingFaceLocalAPI.free_memory()
 
         # Sort by RQI descending; models with errors go last
         run_results.sort(key=lambda r: (r['rqi'] is None, -(r['rqi'] or 0)))

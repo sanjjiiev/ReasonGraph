@@ -1,1 +1,137 @@
-[]
+[
+  {
+    "id": "645f07e7-5b30-4c0a-98ab-57c777198211",
+    "timestamp": "2026-10-06T18:18:02.376797+00:00",
+    "prompt": "Solve this logically: A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost? Show your step-by-step thinking.",
+    "method": "cot",
+    "results": [
+      {
+        "model": "deepseek-chat",
+        "provider": "deepseek",
+        "rqi": 0.3816,
+        "s_coh": 0.3269,
+        "s_eff": 0.0605,
+        "s_struct": 1.0,
+        "raw_output": "Let's solve this step by step:\n<step number=\"1\">\nLet the cost of the ball be <variable>x</variable> dollars. Since the bat costs $1.00 more than the ball, the cost of the bat will be <variable>x + 1.00</variable> dollars.\n</step>\n<step number=\"2\">\nThe total cost of the bat and the ball is $1.10. So, we can write the equation: <variable>x + (x + 1.00) = 1.10</variable>.\n</step>\n<step number=\"3\">\nCombine like terms: <variable>2x + 1.00 = 1.10</variable>.\n</step>\n<step number=\"4\">\nSubtract $1.00 from both sides: <variable>2x = 0.10</variable>.\n</step>\n<step number=\"5\">\nDivide both sides by 2: <variable>x = 0.05</variable>.\n</step>\n<answer>\nThe ball costs $0.05 (5 cents).\n</answer>",
+        "error": null,
+        "edge_scores": [
+          {
+            "source": "Q",
+            "target": "S1",
+            "score": 0.007
+          },
+          {
+            "source": "S1",
+            "target": "S2",
+            "score": 0.9686
+          },
+          {
+            "source": "S2",
+            "target": "S3",
+            "score": 0.9857
+          },
+          {
+            "source": "S3",
+            "target": "S4",
+            "score": 0.0
+          },
+          {
+            "source": "S4",
+            "target": "S5",
+            "score": 0.0
+          },
+          {
+            "source": "S5",
+            "target": "A",
+            "score": 0.0001
+          }
+        ]
+      },
+      {
+        "model": "gpt-4-turbo",
+        "provider": "openai",
+        "rqi": null,
+        "s_coh": null,
+        "s_eff": null,
+        "s_struct": null,
+        "raw_output": "",
+        "error": "OpenAI API Error: Error code: 404 - {'error': {'message': 'The model `gpt-4-turbo` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}} (Status: None)"
+      },
+      {
+        "model": "gpt-4",
+        "provider": "openai",
+        "rqi": null,
+        "s_coh": null,
+        "s_eff": null,
+        "s_struct": null,
+        "raw_output": "",
+        "error": "OpenAI API Error: Error code: 404 - {'error': {'message': 'The model `gpt-4` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}} (Status: None)"
+      },
+      {
+        "model": "gemini-1.5-flash",
+        "provider": "google",
+        "rqi": null,
+        "s_coh": null,
+        "s_eff": null,
+        "s_struct": null,
+        "raw_output": "",
+        "error": "Gemini API Error: 400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}} (Status: None)"
+      },
+      {
+        "model": "gemini-1.5-pro",
+        "provider": "google",
+        "rqi": null,
+        "s_coh": null,
+        "s_eff": null,
+        "s_struct": null,
+        "raw_output": "",
+        "error": "Gemini API Error: 400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}} (Status: None)"
+      }
+    ]
+  },
+  {
+    "id": "d6088a58-65f1-4480-ac2d-878bfd22dcf2",
+    "timestamp": "2026-10-06T17:46:55.297436+00:00",
+    "prompt": "What is 48 plus half of 48? Show the calculation.",
+    "method": "cot",
+    "results": [
+      {
+        "model": "HuggingFaceTB/SmolLM2-360M-Instruct",
+        "provider": "huggingface",
+        "rqi": 0.4342,
+        "s_coh": 0.3941,
+        "s_eff": 0.1238,
+        "s_struct": 1.0,
+        "raw_output": "Step 1: Understand the problem\nThe problem is to find the answer to 48 plus half of 48.\n\nStep 2: Recall the formula for adding half of a number\nThe formula for adding half of a number is:\n\n(5/2) * number\n\nStep 3: Substitute the numbers\nTo find 48 plus half of 48, we can plug in the numbers:\n\n48 + (5/2) * 48\n\nStep 4: Perform the calculation\nTo calculate the sum, we multiply 5/2 by 48:\n\n(5/2) * 48 = (5/2) * 16 = (20) / 2 = 10\n\nStep 5: Simplify the result\nThe final answer is:\n\n10\n\nSo, the answer to 48 plus half of 48 is 10.",
+        "error": null,
+        "edge_scores": [
+          {
+            "source": "Q",
+            "target": "S1",
+            "score": 0.9915
+          },
+          {
+            "source": "S1",
+            "target": "S2",
+            "score": 0.0009
+          },
+          {
+            "source": "S2",
+            "target": "S3",
+            "score": 0.004
+          },
+          {
+            "source": "S3",
+            "target": "S4",
+            "score": 0.9741
+          },
+          {
+            "source": "S4",
+            "target": "S5",
+            "score": 0.0003
+          }
+        ]
+      }
+    ]
+  }
+]

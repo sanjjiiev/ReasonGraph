@@ -465,7 +465,7 @@ class HuggingFaceLocalAPI(BaseAPI):
     Class to load a Hugging Face model directly (no external API call).
 
     The model weights are loaded once and cached for the lifetime of the object.
-    Uses device_map='auto' with bfloat16 on CUDA / MPS, or float32 on CPU.
+    Uses bfloat16 on CUDA and float32 on MPS / CPU.
 
     Requires: transformers, torch, accelerate
     Example model IDs:
@@ -491,6 +491,21 @@ class HuggingFaceLocalAPI(BaseAPI):
         self.provider_name = "HuggingFace"
         self._ensure_model_loaded()
 
+    
+    @classmethod
+    def free_memory(cls):
+        cls._loaded_models.clear()
+        import gc
+        gc.collect()
+        try:
+            import torch
+            if hasattr(torch.backends, 'mps') and torch.backends.mps.is_available():
+                torch.mps.empty_cache()
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+        except:
+            pass
+
     def _ensure_model_loaded(self) -> None:
         """Lazy-load model + tokenizer, caching at class level."""
         if self.model in HuggingFaceLocalAPI._loaded_models:
@@ -502,7 +517,7 @@ class HuggingFaceLocalAPI(BaseAPI):
             from transformers import AutoModelForCausalLM, AutoTokenizer
 
             device = _detect_torch_device()
-            dtype = torch.bfloat16 if device in ("cuda", "mps") else torch.float32
+            dtype = torch.bfloat16 if device == "cuda" else torch.float32
 
             hf_token = self.api_key if self.api_key and self.api_key != "huggingface" else None
 
