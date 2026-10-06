@@ -2,3 +2,5 @@
 /ReasonGraph/api_key.json
 ReasonGraph/api_keys.json
 *.DS_Store*
+run_benchmark.py
+run_cloud_benchmark.py
