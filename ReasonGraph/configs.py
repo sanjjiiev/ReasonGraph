@@ -12,17 +12,27 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 def load_api_keys_from_file(file_path: str = "api_keys.json") -> Dict[str, str]:
-    """Load API keys from a JSON file"""
-    try:
-        if os.path.exists(file_path):
-            with open(file_path, 'r') as f:
-                return json.load(f)
-        else:
-            logger.warning(f"API keys file {file_path} not found")
-            return {}
-    except Exception as e:
-        logger.error(f"Error loading API keys from {file_path}: {str(e)}")
-        return {}
+    """Load API keys from a JSON file, checking common candidate locations"""
+    candidates = [
+        file_path,
+        os.path.join(os.path.dirname(__file__), "api_keys.json"),
+        os.path.join(os.path.dirname(os.path.dirname(__file__)), "api_keys.json"),
+        os.path.join(os.path.dirname(__file__), "api_key.json"),
+        os.path.join(os.path.dirname(os.path.dirname(__file__)), "api_key.json"),
+    ]
+    for path in candidates:
+        try:
+            if os.path.exists(path):
+                with open(path, 'r') as f:
+                    keys = json.load(f)
+                    if isinstance(keys, dict) and len(keys) > 0:
+                        logger.info(f"Loaded API keys from {path}")
+                        return keys
+        except Exception as e:
+            logger.error(f"Error loading API keys from {path}: {str(e)}")
+            
+    logger.warning(f"API keys file not found in searched locations: {candidates[:3]}")
+    return {}
 
 @dataclass
 class GeneralConfig:
@@ -43,13 +53,13 @@ class GeneralConfig:
         #"gpt-4o-mini",
         "gpt-3.5-turbo",
         # Gemini Models
-        "gemini-2.0-flash",
-        "gemini-2.0-flash-lite",
-        "gemini-2.0-pro-exp-02-05",
-        "gemini-1.5-flash",
-        "gemini-1.5-flash-8b",
-        "gemini-1.5-pro",
-        "gemini-2.0-flash-thinking-exp", 
+        "gemini-2.5-flash",
+        "gemini-flash-latest",
+        "gemini-3.5-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-3.1-pro-preview",
+        "gemini-pro-latest", 
         # Together AI Models
         "meta-llama/Llama-3.3-70B-Instruct-Turbo",
         #"meta-llama/Llama-3.2-3B-Instruct-Turbo", 
@@ -151,13 +161,13 @@ class GeneralConfig:
         "chatgpt-4o-latest": "openai",
         #"gpt-4o-mini": "openai",
         "gpt-3.5-turbo": "openai",
-        "gemini-2.0-flash": "google",
-        "gemini-2.0-flash-lite": "google",
-        "gemini-2.0-pro-exp-02-05": "google",
-        "gemini-1.5-flash": "google",
-        "gemini-1.5-flash-8b": "google",
-        "gemini-1.5-pro": "google",
-        "gemini-2.0-flash-thinking-exp": "google", 
+        "gemini-2.5-flash": "google",
+        "gemini-flash-latest": "google",
+        "gemini-3.5-flash": "google",
+        "gemini-3.7-flash": "google",
+        "gemini-3.8-flash": "google",
+        "gemini-3.1-pro-preview": "google",
+        "gemini-pro-latest": "google", 
         "meta-llama/Llama-3.3-70B-Instruct-Turbo": "together",
         #"meta-llama/Llama-3.2-3B-Instruct-Turbo": "together", 
         "meta-llama/Meta-Llama-3.1-405B-Instruct-Lite-Pro": "together",
@@ -252,6 +262,8 @@ class GeneralConfig:
 
     def get_default_api_key(self, provider: str) -> str:
         """Get default API key for specific provider"""
+        if provider in ("google", "gemini"):
+            return self.provider_api_keys.get("google") or self.provider_api_keys.get("gemini", "")
         return self.provider_api_keys.get(provider, "")
 
 @dataclass

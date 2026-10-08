@@ -48,6 +48,15 @@ logger = logging.getLogger(__name__)
 # Initialize Flask app
 app = Flask(__name__)
 
+# Verification Module Integration (Feature Flagged)
+VERIFY_ENABLED = True
+if VERIFY_ENABLED:
+    try:
+        from verify_routes import verify_bp
+        app.register_blueprint(verify_bp)
+    except ImportError as e:
+        logger.warning(f"Could not load verification module: {e}")
+
 # ── Benchmark persistence ─────────────────────────────────────────────────────
 _BENCH_DIR   = os.path.join(os.path.dirname(__file__), "benchmarks")
 _BENCH_STORE = os.path.join(_BENCH_DIR, "results.json")

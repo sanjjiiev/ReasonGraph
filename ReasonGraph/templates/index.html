@@ -665,6 +665,9 @@
                     <button onclick="processQuestion()" id="process-btn" class="tooltip">Start Reasoning
                         <span class="tooltiptext">Normal reasoning by selected method and model</span>
                     </button>
+                    <button onclick="verifyGraph()" id="verify-btn" class="tooltip" style="background-color: #fca5a5; color: #7f1d1d;">Verify Graph
+                        <span class="tooltiptext">Check reasoning graph for arithmetic and logic errors</span>
+                    </button>
                     <button onclick="longReasoning()" id="long-btn" class="tooltip">Long Reasoning
                         <span class="tooltiptext">Only supported by deepseek-reasoner and qwq-plus models; Please insert Claude's API key for long reasoning visualization</span>
                     </button>
@@ -746,6 +749,7 @@
                     <button class="zoom-button" onclick="downloadDiagram()">Download Flow Chart</button>
                     <button class="zoom-button" onclick="downloadMermaidCode()">Download Code</button>
                 </div>
+                <div id="verification-results" style="display: none; padding: 10px; margin: 10px 0; border: 1px solid #fecaca; border-radius: 5px; background: #fff5f5; color: #dc2626;"></div>
                 <div class="visualization-wrapper">
                     <div id="mermaid-container">
                         <div id="mermaid-diagram"></div>
@@ -920,10 +924,19 @@
                 if (cloudProviders.length > 0) {
                     const cloudGroup = document.createElement('optgroup');
                     cloudGroup.label = '☁ Cloud Providers';
+                    const providerLabels = {
+                        'google': 'Google (Gemini)',
+                        'openai': 'OpenAI',
+                        'anthropic': 'Anthropic',
+                        'together': 'Together AI',
+                        'deepseek': 'DeepSeek',
+                        'qwen': 'Qwen',
+                        'grok': 'Grok (xAI)'
+                    };
                     cloudProviders.forEach(provider => {
                         const option = document.createElement('option');
                         option.value = provider;
-                        option.textContent = provider.charAt(0).toUpperCase() + provider.slice(1);
+                        option.textContent = providerLabels[provider] || (provider.charAt(0).toUpperCase() + provider.slice(1));
                         cloudGroup.appendChild(option);
                     });
                     providerSelect.appendChild(cloudGroup);
@@ -2059,5 +2072,6 @@ Please visualize the thinking steps from the original reasoning process as a pro
         }
 
     </script>
+    <script src="{{ url_for('static', filename='verify.js') }}"></script>
 </body>
 </html>

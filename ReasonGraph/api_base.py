@@ -175,7 +175,7 @@ class OpenAIAPI(BaseAPI):
 class GeminiAPI(BaseAPI):
     """Class to handle interactions with the Google Gemini API"""
     
-    def __init__(self, api_key: str, model: str = "gemini-2.0-flash"):
+    def __init__(self, api_key: str, model: str = "gemini-2.5-flash"):
         super().__init__(api_key, model)
         self.provider_name = "Gemini"
         try:
@@ -186,28 +186,44 @@ class GeminiAPI(BaseAPI):
 
     def generate_response(self, prompt: str, max_tokens: int = 1024, 
                          prompt_format: Optional[str] = None) -> str:
-        """Generate a response using the Gemini API"""
-        try:
-            from google.genai import types
-            formatted_prompt = self._format_prompt(prompt, prompt_format)
-            
-            logger.info(f"Sending request to Gemini API with model {self.model}")
-            response = self.client.models.generate_content(
-                model=self.model,
-                contents=[formatted_prompt],
-                config=types.GenerateContentConfig(
-                    max_output_tokens=max_tokens,
-                    temperature=0.7
+        """Generate a response using the Gemini API with retry logic"""
+        import time
+        from google.genai import types
+        formatted_prompt = self._format_prompt(prompt, prompt_format)
+        
+        max_retries = 3
+        last_error = None
+        
+        for attempt in range(max_retries):
+            try:
+                logger.info(f"Sending request to Gemini API with model {self.model} (attempt {attempt + 1}/{max_retries})")
+                response = self.client.models.generate_content(
+                    model=self.model,
+                    contents=[formatted_prompt],
+                    config=types.GenerateContentConfig(
+                        max_output_tokens=max_tokens,
+                        temperature=0.7
+                    )
                 )
-            )
-            
-            if not response.text:
-                raise APIError("Empty response from Gemini API", self.provider_name)
                 
-            return response.text
-            
-        except Exception as e:
-            self._handle_error(e, "request or response processing")
+                if not response.text:
+                    raise APIError("Empty response from Gemini API", self.provider_name)
+                    
+                return response.text
+                
+            except Exception as e:
+                last_error = e
+                err_str = str(e).lower()
+                # If 503 / high demand or 429 rate limit, wait and retry
+                if ("503" in err_str or "unavailable" in err_str or "high demand" in err_str or "429" in err_str) and attempt < max_retries - 1:
+                    wait_time = (attempt + 1) * 2
+                    logger.warning(f"Gemini API transient issue ({e}), retrying in {wait_time}s...")
+                    time.sleep(wait_time)
+                    continue
+                else:
+                    break
+                    
+        self._handle_error(last_error, "request or response processing")
 
 class TogetherAPI(BaseAPI):
     """Class to handle interactions with the Together AI API"""
@@ -625,7 +641,11 @@ class APIFactory:
         },
         "google": {
             "class": GeminiAPI,
-            "default_model": "gemini-2.0-flash"
+            "default_model": "gemini-2.5-flash"
+        },
+        "gemini": {
+            "class": GeminiAPI,
+            "default_model": "gemini-2.5-flash"
         },
         "together": {
             "class": TogetherAPI,

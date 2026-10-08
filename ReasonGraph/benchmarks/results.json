@@ -1,5 +1,23 @@
 [
   {
+    "id": "58e5cdfa-f162-4e53-932b-d6061b03202f",
+    "timestamp": "2026-10-08T15:30:19.443640+00:00",
+    "prompt": "Give me two suggestions for transitioning from a journalist to a book editor?",
+    "method": "bs",
+    "results": [
+      {
+        "model": "gemini-2.5-flash",
+        "provider": "google",
+        "rqi": null,
+        "s_coh": null,
+        "s_eff": null,
+        "s_struct": null,
+        "raw_output": "<node id=\"root\" score=\"1.0\">\nInitial analysis - The problem is to provide two actionable suggestions for a journalist looking to transition into a book editor role. Key considerations include leveraging existing journalistic skills (research, writing, storytelling, fact-checking, deadlines) and addressing the differences in skill sets and industry knowledge for book editing (structural editing, line editing, copy editing, author",
+        "error": "Graph extraction produced no reasoning or answer nodes"
+      }
+    ]
+  },
+  {
     "id": "645f07e7-5b30-4c0a-98ab-57c777198211",
     "timestamp": "2026-10-06T18:18:02.376797+00:00",
     "prompt": "Solve this logically: A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost? Show your step-by-step thinking.",

@@ -1,0 +1,132 @@
+[
+  {
+    "id": "clean-1",
+    "nodes": [
+      {"id": "1", "text": "Start with 10 apples.", "parent_ids": []},
+      {"id": "2", "text": "Buy 5 more apples.", "parent_ids": ["1"]},
+      {"id": "3", "text": "Now you have 10 + 5 = 15 apples.", "parent_ids": ["2"]}
+    ],
+    "expected_flags": []
+  },
+  {
+    "id": "clean-2",
+    "nodes": [
+      {"id": "1", "text": "The speed is 60 mph.", "parent_ids": []},
+      {"id": "2", "text": "Drive for 2 hours.", "parent_ids": ["1"]},
+      {"id": "3", "text": "Distance is 60 * 2 = 120 miles.", "parent_ids": ["2"]}
+    ],
+    "expected_flags": []
+  },
+  {
+    "id": "clean-3",
+    "nodes": [
+      {"id": "1", "text": "Revenue is 500 dollars.", "parent_ids": []},
+      {"id": "2", "text": "Costs are 300 dollars.", "parent_ids": ["1"]},
+      {"id": "3", "text": "Profit is 500 - 300 = 200 dollars.", "parent_ids": ["2"]}
+    ],
+    "expected_flags": []
+  },
+  {
+    "id": "clean-4",
+    "nodes": [
+      {"id": "1", "text": "There are 48 clips.", "parent_ids": []},
+      {"id": "2", "text": "She sold half.", "parent_ids": ["1"]},
+      {"id": "3", "text": "She sold 48 / 2 = 24 clips.", "parent_ids": ["2"]}
+    ],
+    "expected_flags": []
+  },
+  {
+    "id": "clean-5",
+    "nodes": [
+      {"id": "1", "text": "He ran 5 miles on Monday.", "parent_ids": []},
+      {"id": "2", "text": "He ran 3 miles on Tuesday.", "parent_ids": ["1"]},
+      {"id": "3", "text": "Total is 5 + 3 = 8 miles.", "parent_ids": ["2"]}
+    ],
+    "expected_flags": []
+  },
+  {
+    "id": "math-err-1",
+    "nodes": [
+      {"id": "1", "text": "Start with 10 apples.", "parent_ids": []},
+      {"id": "2", "text": "Buy 5 more apples.", "parent_ids": ["1"]},
+      {"id": "3", "text": "Now you have 10 + 5 = 16 apples.", "parent_ids": ["2"]}
+    ],
+    "expected_flags": ["3"]
+  },
+  {
+    "id": "math-err-2",
+    "nodes": [
+      {"id": "1", "text": "The speed is 60 mph.", "parent_ids": []},
+      {"id": "2", "text": "Drive for 2 hours.", "parent_ids": ["1"]},
+      {"id": "3", "text": "Distance is 60 * 2 = 100 miles.", "parent_ids": ["2"]}
+    ],
+    "expected_flags": ["3"]
+  },
+  {
+    "id": "math-err-3",
+    "nodes": [
+      {"id": "1", "text": "Revenue is 500 dollars.", "parent_ids": []},
+      {"id": "2", "text": "Costs are 300 dollars.", "parent_ids": ["1"]},
+      {"id": "3", "text": "Profit is 500 - 300 = 100 dollars.", "parent_ids": ["2"]}
+    ],
+    "expected_flags": ["3"]
+  },
+  {
+    "id": "math-err-4",
+    "nodes": [
+      {"id": "1", "text": "There are 48 clips.", "parent_ids": []},
+      {"id": "2", "text": "She sold half.", "parent_ids": ["1"]},
+      {"id": "3", "text": "She sold 48 / 2 = 25 clips.", "parent_ids": ["2"]}
+    ],
+    "expected_flags": ["3"]
+  },
+  {
+    "id": "math-err-5",
+    "nodes": [
+      {"id": "1", "text": "He ran 5 miles on Monday.", "parent_ids": []},
+      {"id": "2", "text": "He ran 3 miles on Tuesday.", "parent_ids": ["1"]},
+      {"id": "3", "text": "Total is 5 + 3 = 7 miles.", "parent_ids": ["2"]}
+    ],
+    "expected_flags": ["3"]
+  },
+  {
+    "id": "nli-err-1",
+    "nodes": [
+      {"id": "1", "text": "The total is exactly 72 dollars.", "parent_ids": []},
+      {"id": "2", "text": "So the total is 70 dollars.", "parent_ids": ["1"]}
+    ],
+    "expected_flags": ["2"]
+  },
+  {
+    "id": "nli-err-2",
+    "nodes": [
+      {"id": "1", "text": "John is older than Mary.", "parent_ids": []},
+      {"id": "2", "text": "Mary is older than John.", "parent_ids": ["1"]}
+    ],
+    "expected_flags": ["2"]
+  },
+  {
+    "id": "nli-err-3",
+    "nodes": [
+      {"id": "1", "text": "The train leaves at 5 PM.", "parent_ids": []},
+      {"id": "2", "text": "The train departs in the morning.", "parent_ids": ["1"]}
+    ],
+    "expected_flags": ["2"]
+  },
+  {
+    "id": "nli-err-4",
+    "nodes": [
+      {"id": "1", "text": "All cats in the room are black.", "parent_ids": []},
+      {"id": "2", "text": "There is a white cat in the room.", "parent_ids": ["1"]}
+    ],
+    "expected_flags": ["2"]
+  },
+  {
+    "id": "nli-err-5",
+    "nodes": [
+      {"id": "1", "text": "The box is completely empty.", "parent_ids": []},
+      {"id": "2", "text": "The box contains two books.", "parent_ids": ["1"]}
+    ],
+    "expected_flags": ["2"]
+  }
+]
