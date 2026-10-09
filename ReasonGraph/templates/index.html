@@ -2028,7 +2028,6 @@ Please visualize the thinking steps from the original reasoning process as a pro
                 headerTr.style.backgroundColor = '#f3f4f6';
                 headerTr.innerHTML = `
                     <td colspan="8" style="padding: 12px; text-align: left; border-top: 2px solid #d1d5db;">
-                        <strong>Run Date:</strong> ${new Date(run.timestamp).toLocaleString()} &nbsp;&nbsp;|&nbsp;&nbsp; 
                         <strong>Prompt:</strong> ${run.prompt.substring(0, 80)}${run.prompt.length > 80 ? '...' : ''}
                     </td>
                 `;
