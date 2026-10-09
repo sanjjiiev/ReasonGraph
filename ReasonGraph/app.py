@@ -48,6 +48,10 @@ logger = logging.getLogger(__name__)
 # Initialize Flask app
 app = Flask(__name__)
 
+# ── Register Blueprints ───────────────────────────────────────────────────────
+from rerun_routes import rerun_bp          # noqa: E402  (local import keeps order clear)
+app.register_blueprint(rerun_bp)
+
 # ── Benchmark persistence ─────────────────────────────────────────────────────
 _BENCH_DIR   = os.path.join(os.path.dirname(__file__), "benchmarks")
 _BENCH_STORE = os.path.join(_BENCH_DIR, "results.json")
