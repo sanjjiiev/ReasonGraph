@@ -1988,7 +1988,7 @@ Please visualize the thinking steps from the original reasoning process as a pro
                 
                 if (result.success) {
                     document.getElementById('bench-status').textContent = `Benchmark completed at ${new Date(result.timestamp).toLocaleTimeString()}`;
-                    renderLeaderboard(result.results);
+                    loadBenchmarkHistory();
                 } else {
                     document.getElementById('bench-status').textContent = 'Benchmark failed: ' + result.error;
                 }
@@ -2002,11 +2002,11 @@ Please visualize the thinking steps from the original reasoning process as a pro
 
         async function loadBenchmarkHistory() {
             try {
-                const res = await fetch('/api/benchmark/history?limit=1');
+                const res = await fetch('/api/benchmark/history?limit=20');
                 const result = await res.json();
                 if (result.success && result.history && result.history.length > 0) {
-                    document.getElementById('bench-status').textContent = `Showing last run from ${new Date(result.history[0].timestamp).toLocaleString()}`;
-                    renderLeaderboard(result.history[0].results);
+                    document.getElementById('bench-status').textContent = `Showing last ${result.history.length} benchmark runs`;
+                    renderLeaderboardHistory(result.history);
                     document.getElementById('bench-header').classList.remove('collapsed');
                     document.getElementById('bench-body').classList.add('open');
                 } else {
@@ -2017,47 +2017,61 @@ Please visualize the thinking steps from the original reasoning process as a pro
             }
         }
 
-        function renderLeaderboard(results) {
+        function renderLeaderboardHistory(historyRuns) {
             const wrap = document.getElementById('leaderboard-wrap');
             const tbody = document.getElementById('leaderboard-tbody');
             tbody.innerHTML = '';
             
-            let rank = 1;
-            results.forEach((r, idx) => {
-                const tr = document.createElement('tr');
-                if (r.error) {
-                    tr.className = 'error-row';
-                    tr.innerHTML = `
-                        <td>-</td>
-                        <td><strong>${r.model}</strong></td>
-                        <td>${r.provider}</td>
-                        <td colspan="4">Error: ${r.error}</td>
-                        <td>Failed</td>
-                    `;
-                } else {
-                    if (rank <= 3) tr.className = `rank-${rank}`;
-                    const rqi = r.rqi !== null ? r.rqi.toFixed(3) : '-';
-                    const scoh = r.s_coh !== null ? r.s_coh.toFixed(3) : '-';
-                    const seff = r.s_eff !== null ? r.s_eff.toFixed(3) : '-';
-                    const sstruct = r.s_struct !== null ? r.s_struct.toFixed(3) : '-';
-                    
-                    tr.innerHTML = `
-                        <td>${rank}</td>
-                        <td><strong>${r.model}</strong></td>
-                        <td>${r.provider}</td>
-                        <td><span class="rqi-badge">${rqi}</span></td>
-                        <td>${scoh}</td>
-                        <td>${seff}</td>
-                        <td>${sstruct}</td>
-                        <td style="color:green">Success</td>
-                    `;
-                    rank++;
-                }
-                tbody.appendChild(tr);
+            historyRuns.forEach((run, runIdx) => {
+                // Insert a header row for the run
+                const headerTr = document.createElement('tr');
+                headerTr.style.backgroundColor = '#f3f4f6';
+                headerTr.innerHTML = `
+                    <td colspan="8" style="padding: 12px; text-align: left; border-top: 2px solid #d1d5db;">
+                        <strong>Prompt:</strong> ${run.prompt.substring(0, 80)}${run.prompt.length > 80 ? '...' : ''}
+                    </td>
+                `;
+                tbody.appendChild(headerTr);
+
+                let rank = 1;
+                run.results.forEach((r, idx) => {
+                    const tr = document.createElement('tr');
+                    if (r.error) {
+                        tr.className = 'error-row';
+                        tr.innerHTML = `
+                            <td>-</td>
+                            <td><strong>${r.model}</strong></td>
+                            <td>${r.provider}</td>
+                            <td colspan="4">Error: ${r.error}</td>
+                            <td>Failed</td>
+                        `;
+                    } else {
+                        if (rank <= 3) tr.className = `rank-${rank}`;
+                        const rqi = r.rqi !== null ? r.rqi.toFixed(3) : '-';
+                        const scoh = r.s_coh !== null ? r.s_coh.toFixed(3) : '-';
+                        const seff = r.s_eff !== null ? r.s_eff.toFixed(3) : '-';
+                        const sstruct = r.s_struct !== null ? r.s_struct.toFixed(3) : '-';
+                        
+                        tr.innerHTML = `
+                            <td>${rank}</td>
+                            <td><strong>${r.model}</strong></td>
+                            <td>${r.provider}</td>
+                            <td><span class="rqi-badge">${rqi}</span></td>
+                            <td>${scoh}</td>
+                            <td>${seff}</td>
+                            <td>${sstruct}</td>
+                            <td style="color:green">Success</td>
+                        `;
+                        rank++;
+                    }
+                    tbody.appendChild(tr);
+                });
             });
             wrap.style.display = 'block';
         }
 
     </script>
+    <!-- Step-Edit Re-run panel -->
+    <script src="/static/rerun.js"></script>
 </body>
 </html>

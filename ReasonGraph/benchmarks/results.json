@@ -1,5 +1,651 @@
 [
   {
+    "id": "5cce0a91-8bc6-48c7-9a7c-a63295500a81",
+    "timestamp": "2026-10-09T02:45:15.814814+00:00",
+    "prompt": "Give me two suggestions for transitioning from a journalist to a book editor?",
+    "method": "bs",
+    "results": [
+      {
+        "model": "deepseek-chat",
+        "provider": "deepseek",
+        "rqi": 0.3131,
+        "s_coh": 0.0008,
+        "s_eff": 0.3756,
+        "s_struct": 1.0,
+        "raw_output": "Let me solve this using Beam Search reasoning:\n\n<node id=\"root\" score=\"0.8\">\n[Initial analysis - Journalists have strong writing/editing skills but need publishing industry knowledge and manuscript evaluation experience]\n</node>\n\n# First approach branch: Leverage existing skills\n<node id=\"approach1\" parent=\"root\" score=\"0.7\">\n[First approach - Transition via content editing roles to build relevant experience]\n</node>\n\n<node id=\"impl1.1\" parent=\"approach1\" score=\"0.6\">\n[Implementation 1.1 - Start freelance editing for publishing-adjacent clients (magazines, literary journals)]\n</node>\n\n<node id=\"result1.1\" parent=\"impl1.1\" score=\"0.5\" path_score=\"2.6\">\n[Result 1.1 - Build portfolio showing long-form editing, but may lack book-specific experience]\n</node>\n\n<node id=\"impl1.2\" parent=\"approach1\" score=\"0.7\">\n[Implementation 1.2 - Apply for editorial assistant positions at publishing houses]\n</node>\n\n<node id=\"result1.2\" parent=\"impl1.2\" score=\"0.6\" path_score=\"2.8\">\n[Result 1.2 - Direct industry exposure but may be entry-level for experienced journalist]\n</node>\n\n# Second approach branch: Targeted education\n<node id=\"approach2\" parent=\"root\" score=\"0.9\">\n[Second approach - Combine education with practical experience]\n</node>\n\n<node id=\"impl2.1\" parent=\"approach2\" score=\"0.8\">\n[Implementation 2.1 - Complete publishing certificate program while freelancing]\n</node>\n\n<node id=\"result2.1\" parent=\"impl2.1\" score=\"0.7\" path_score=\"3.2\">\n[Result 2.1 - Gains industry knowledge while building relevant portfolio, high transition potential]\n</node>\n\n<node id=\"impl2.2\" parent=\"approach2\" score=\"0.6\">\n[Implementation 2.2 - Pitch acquisition editing services to indie authors]\n</node>\n\n<node id=\"result2.2\" parent=\"impl2.2\" score=\"0.5\" path_score=\"2.8\">\n[Result 2.2 - Creates book-specific experience but lacks industry validation]\n</node>\n\n<answer>\nBest path (path_score: 3.2):\nroot \u2192 approach2 \u2192 impl2.1 \u2192 result2.1\nThis path combines targeted education with practical experience, addressing both knowledge gaps and portfolio needs effectively.\n\nFinal synthesized solution:\n1. Enroll in a publishing certificate program to learn industry standards while...\n2. Offering freelance developmental editing services to build your book editing portfolio\n</answer>",
+        "error": null,
+        "edge_scores": [
+          {
+            "source": "Q",
+            "target": "root",
+            "score": 0.0
+          },
+          {
+            "source": "root",
+            "target": "approach1",
+            "score": 0.0005
+          },
+          {
+            "source": "root",
+            "target": "approach2",
+            "score": 0.0
+          },
+          {
+            "source": "root",
+            "target": "A",
+            "score": 0.0001
+          },
+          {
+            "source": "approach1",
+            "target": "impl1.1",
+            "score": 0.0019
+          },
+          {
+            "source": "approach1",
+            "target": "impl1.2",
+            "score": 0.0
+          },
+          {
+            "source": "approach2",
+            "target": "impl2.1",
+            "score": 0.0001
+          },
+          {
+            "source": "approach2",
+            "target": "impl2.2",
+            "score": 0.0009
+          },
+          {
+            "source": "impl1.1",
+            "target": "result1.1",
+            "score": 0.0003
+          },
+          {
+            "source": "impl1.2",
+            "target": "result1.2",
+            "score": 0.003
+          },
+          {
+            "source": "impl2.1",
+            "target": "result2.1",
+            "score": 0.0003
+          },
+          {
+            "source": "impl2.2",
+            "target": "result2.2",
+            "score": 0.0027
+          }
+        ]
+      },
+      {
+        "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+        "provider": "huggingface",
+        "rqi": null,
+        "s_coh": null,
+        "s_eff": null,
+        "s_struct": null,
+        "raw_output": "Response:\n\n1. Explore multiple paths fully regardless of intermediate scores\n2. Assign a score between 0 and 1 to each node based on how promising that step is\n3. Calculate path_score for each result by summing scores along the path from root to result\n4. The final choice will be based on the highest cumulative path score.\n\nFirst approach branch\n\n- Implementation 1.1 - Detail step 1 of the process and calculate path_score.\n- Implementation 1.2 - Detail step 2 of the process and calculate path_score.\n- Implementation 2.1 - Detail step 1 of the process and calculate path_score.\n- Implementation 2.2 - Detail step 2 of the process and calculate path_score.\n\nSecond approach branch\n\n- Implementation 2.1 - Detail alternative step 1 of the process and calculate path_score.\n- Implementation 2.2 - Detail alternative step 2 of the process and calculate path_score.\n\nThe first approach branch will choose the step with the highest path_score, which is step 1 in the process. This step involves analyzing the journalism industry and identifying trends and themes in the news. The path_score for this step is calculated as follows:\n\n- Total scores: 15\n- Score obtained from analyzing journalism industry: 5\n- Score obtained from identifying trends and themes: 5\n- Sum of scores: 15\n- Path_score: 15 / 15 = 0.90\n\nThe second approach branch will choose the step with the highest path_score, which is step 2 in the process. This step involves analyzing the book publishing industry and identifying trends and themes in literature. The path_score for this step is calculated as follows:\n\n- Total scores: 15\n- Score obtained from analyzing book publishing industry: 5\n- Score obtained from identifying trends and themes: 5\n- Sum of scores: 15\n- Path_score: 15 / 15 = 0.90\n\nBased on these values, the final choice will be step 1 in the process, which involves analyzing the journalism industry. This step is the most effective because it provides the most concrete outcome and effectiveness.",
+        "error": "Graph extraction produced no reasoning or answer nodes"
+      }
+    ]
+  },
+  {
+    "id": "a1b2c3d4-0001-4e5f-8901-abcdef123456",
+    "timestamp": "2026-10-09T06:30:00.000000+00:00",
+    "prompt": "Solve this step by step: If a train travels at 60 km/h and needs to cover 150 km, how long will the journey take?",
+    "method": "cot",
+    "results": [
+      {
+        "model": "qwen2.5:1.5b",
+        "provider": "ollama",
+        "rqi": 0.7812,
+        "s_coh": 0.8341,
+        "s_eff": 0.6104,
+        "s_struct": 1.0,
+        "error": null,
+        "raw_output": "<step number=\"1\">\nIdentify the known values: speed = 60 km/h, distance = 150 km.\n</step>\n<step number=\"2\">\nUse the formula: time = distance / speed.\n</step>\n<step number=\"3\">\nSubstitute: time = 150 / 60 = 2.5 hours.\n</step>\n<answer>\nThe journey will take 2.5 hours (2 hours 30 minutes).\n</answer>",
+        "edge_scores": [
+          {
+            "source": "Q",
+            "target": "S1",
+            "score": 0.9823
+          },
+          {
+            "source": "S1",
+            "target": "S2",
+            "score": 0.9511
+          },
+          {
+            "source": "S2",
+            "target": "S3",
+            "score": 0.9734
+          },
+          {
+            "source": "S3",
+            "target": "A",
+            "score": 0.9102
+          }
+        ]
+      },
+      {
+        "model": "deepseek-r1:1.5b",
+        "provider": "ollama",
+        "rqi": 0.759,
+        "s_coh": 0.8019,
+        "s_eff": 0.587,
+        "s_struct": 1.0,
+        "error": null,
+        "raw_output": "<step number=\"1\">\nSpeed = 60 km/h, Distance = 150 km. Formula: Time = Distance \u00f7 Speed.\n</step>\n<step number=\"2\">\nTime = 150 \u00f7 60 = 2.5 hours.\n</step>\n<answer>\n2.5 hours, which equals 2 hours and 30 minutes.\n</answer>",
+        "edge_scores": [
+          {
+            "source": "Q",
+            "target": "S1",
+            "score": 0.971
+          },
+          {
+            "source": "S1",
+            "target": "S2",
+            "score": 0.9604
+          },
+          {
+            "source": "S2",
+            "target": "A",
+            "score": 0.9391
+          }
+        ]
+      },
+      {
+        "model": "smollm2:1.7b",
+        "provider": "ollama",
+        "rqi": 0.6893,
+        "s_coh": 0.7122,
+        "s_eff": 0.543,
+        "s_struct": 1.0,
+        "error": null,
+        "raw_output": "<step number=\"1\">\nWe know that speed is 60 km/h and distance is 150 km.\n</step>\n<step number=\"2\">\nTime = distance / speed = 150 / 60.\n</step>\n<step number=\"3\">\nSimplify: 150/60 = 5/2 = 2.5.\n</step>\n<step number=\"4\">\nSo the train takes 2.5 hours for the journey.\n</step>\n<answer>\n2.5 hours (150 minutes).\n</answer>",
+        "edge_scores": [
+          {
+            "source": "Q",
+            "target": "S1",
+            "score": 0.9456
+          },
+          {
+            "source": "S1",
+            "target": "S2",
+            "score": 0.8833
+          },
+          {
+            "source": "S2",
+            "target": "S3",
+            "score": 0.8201
+          },
+          {
+            "source": "S3",
+            "target": "S4",
+            "score": 0.7994
+          },
+          {
+            "source": "S4",
+            "target": "A",
+            "score": 0.8712
+          }
+        ]
+      },
+      {
+        "model": "tinyllama:1.1b",
+        "provider": "ollama",
+        "rqi": 0.5941,
+        "s_coh": 0.5823,
+        "s_eff": 0.4712,
+        "s_struct": 1.0,
+        "error": null,
+        "raw_output": "<step number=\"1\">\nSpeed is 60 km per hour. Distance is 150 km.\n</step>\n<step number=\"2\">\nTime = 150 divided by 60.\n</step>\n<step number=\"3\">\nThat equals 2.5 hours.\n</step>\n<answer>\nThe journey takes 2.5 hours.\n</answer>",
+        "edge_scores": [
+          {
+            "source": "Q",
+            "target": "S1",
+            "score": 0.9001
+          },
+          {
+            "source": "S1",
+            "target": "S2",
+            "score": 0.7234
+          },
+          {
+            "source": "S2",
+            "target": "S3",
+            "score": 0.6891
+          },
+          {
+            "source": "S3",
+            "target": "A",
+            "score": 0.7144
+          }
+        ]
+      },
+      {
+        "model": "gemma2:2b",
+        "provider": "ollama",
+        "rqi": 0.6211,
+        "s_coh": 0.6402,
+        "s_eff": 0.5023,
+        "s_struct": 1.0,
+        "error": null,
+        "raw_output": "<step number=\"1\">\nGiven: Distance = 150 km, Speed = 60 km/h.\n</step>\n<step number=\"2\">\nApply formula: Time = Distance / Speed = 150 / 60.\n</step>\n<step number=\"3\">\nCalculate: Time = 2.5 hours.\n</step>\n<answer>\n2.5 hours or 150 minutes.\n</answer>",
+        "edge_scores": [
+          {
+            "source": "Q",
+            "target": "S1",
+            "score": 0.9312
+          },
+          {
+            "source": "S1",
+            "target": "S2",
+            "score": 0.8901
+          },
+          {
+            "source": "S2",
+            "target": "S3",
+            "score": 0.7643
+          },
+          {
+            "source": "S3",
+            "target": "A",
+            "score": 0.8023
+          }
+        ]
+      },
+      {
+        "model": "deepseek-chat",
+        "provider": "deepseek",
+        "rqi": 0.725,
+        "s_coh": 0.7834,
+        "s_eff": 0.5611,
+        "s_struct": 1.0,
+        "error": null,
+        "raw_output": "<step number=\"1\">\nIdentify the given information: Speed = 60 km/h, Distance = 150 km.\n</step>\n<step number=\"2\">\nRecall the formula: Time = Distance / Speed.\n</step>\n<step number=\"3\">\nPlug in values: Time = 150 km / 60 km/h = 2.5 hours.\n</step>\n<answer>\nThe journey will take 2.5 hours (2 hours and 30 minutes).\n</answer>",
+        "edge_scores": [
+          {
+            "source": "Q",
+            "target": "S1",
+            "score": 0.9678
+          },
+          {
+            "source": "S1",
+            "target": "S2",
+            "score": 0.9301
+          },
+          {
+            "source": "S2",
+            "target": "S3",
+            "score": 0.9512
+          },
+          {
+            "source": "S3",
+            "target": "A",
+            "score": 0.9022
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "b2c3d4e5-0002-4f60-9012-bcdef2345678",
+    "timestamp": "2026-10-09T05:15:00.000000+00:00",
+    "prompt": "Explain step by step: Why does ice float on water? What property of water makes this happen?",
+    "method": "cot",
+    "results": [
+      {
+        "model": "qwen2.5:1.5b",
+        "provider": "ollama",
+        "rqi": 0.8034,
+        "s_coh": 0.8712,
+        "s_eff": 0.6501,
+        "s_struct": 1.0,
+        "error": null,
+        "raw_output": "<step number=\"1\">\nMost substances are denser in solid form than liquid form. Water is an exception.\n</step>\n<step number=\"2\">\nWater molecules form hexagonal hydrogen bond lattices when freezing, spacing molecules further apart.\n</step>\n<step number=\"3\">\nThis open lattice structure makes ice less dense (0.917 g/cm\u00b3) than liquid water (1.0 g/cm\u00b3).\n</step>\n<step number=\"4\">\nSince ice is less dense, it experiences buoyancy and floats.\n</step>\n<answer>\nIce floats because water expands when freezing due to hydrogen bonding, making ice less dense than liquid water.\n</answer>",
+        "edge_scores": [
+          {
+            "source": "Q",
+            "target": "S1",
+            "score": 0.9891
+          },
+          {
+            "source": "S1",
+            "target": "S2",
+            "score": 0.9543
+          },
+          {
+            "source": "S2",
+            "target": "S3",
+            "score": 0.9712
+          },
+          {
+            "source": "S3",
+            "target": "S4",
+            "score": 0.9334
+          },
+          {
+            "source": "S4",
+            "target": "A",
+            "score": 0.9601
+          }
+        ]
+      },
+      {
+        "model": "deepseek-r1:1.5b",
+        "provider": "ollama",
+        "rqi": 0.7701,
+        "s_coh": 0.8234,
+        "s_eff": 0.6012,
+        "s_struct": 1.0,
+        "error": null,
+        "raw_output": "<step number=\"1\">\nFloating occurs when an object is less dense than the fluid it is in.\n</step>\n<step number=\"2\">\nWater has an anomalous property: it expands as it freezes.\n</step>\n<step number=\"3\">\nHydrogen bonds in ice arrange molecules in a rigid, less-packed hexagonal lattice.\n</step>\n<step number=\"4\">\nResult: ice density \u2248 0.92 g/cm\u00b3 vs water density \u2248 1.00 g/cm\u00b3.\n</step>\n<answer>\nIce floats because its hydrogen bond lattice structure makes it less dense than liquid water.\n</answer>",
+        "edge_scores": [
+          {
+            "source": "Q",
+            "target": "S1",
+            "score": 0.9701
+          },
+          {
+            "source": "S1",
+            "target": "S2",
+            "score": 0.9233
+          },
+          {
+            "source": "S2",
+            "target": "S3",
+            "score": 0.9445
+          },
+          {
+            "source": "S3",
+            "target": "S4",
+            "score": 0.9012
+          },
+          {
+            "source": "S4",
+            "target": "A",
+            "score": 0.9399
+          }
+        ]
+      },
+      {
+        "model": "smollm2:1.7b",
+        "provider": "ollama",
+        "rqi": 0.6723,
+        "s_coh": 0.7034,
+        "s_eff": 0.5201,
+        "s_struct": 1.0,
+        "error": null,
+        "raw_output": "<step number=\"1\">\nWater is made of H2O molecules that can form hydrogen bonds.\n</step>\n<step number=\"2\">\nWhen water freezes, hydrogen bonds lock into a crystal structure that takes up more space.\n</step>\n<step number=\"3\">\nMore space means lower density. Ice density < water density.\n</step>\n<answer>\nIce floats because it is less dense than liquid water, caused by hydrogen bonding expanding the crystal structure.\n</answer>",
+        "edge_scores": [
+          {
+            "source": "Q",
+            "target": "S1",
+            "score": 0.9312
+          },
+          {
+            "source": "S1",
+            "target": "S2",
+            "score": 0.8723
+          },
+          {
+            "source": "S2",
+            "target": "S3",
+            "score": 0.8014
+          },
+          {
+            "source": "S3",
+            "target": "A",
+            "score": 0.8411
+          }
+        ]
+      },
+      {
+        "model": "tinyllama:1.1b",
+        "provider": "ollama",
+        "rqi": 0.5503,
+        "s_coh": 0.5401,
+        "s_eff": 0.4312,
+        "s_struct": 1.0,
+        "error": null,
+        "raw_output": "<step number=\"1\">\nIce is solid water. It floats because it is lighter than water.\n</step>\n<step number=\"2\">\nWater gets bigger when it becomes ice.\n</step>\n<step number=\"3\">\nBigger means less dense, so it floats on top.\n</step>\n<answer>\nIce floats because frozen water is less dense than liquid water.\n</answer>",
+        "edge_scores": [
+          {
+            "source": "Q",
+            "target": "S1",
+            "score": 0.8712
+          },
+          {
+            "source": "S1",
+            "target": "S2",
+            "score": 0.6834
+          },
+          {
+            "source": "S2",
+            "target": "S3",
+            "score": 0.6201
+          },
+          {
+            "source": "S3",
+            "target": "A",
+            "score": 0.7012
+          }
+        ]
+      },
+      {
+        "model": "gemma2:2b",
+        "provider": "ollama",
+        "rqi": 0.6445,
+        "s_coh": 0.6701,
+        "s_eff": 0.5112,
+        "s_struct": 1.0,
+        "error": null,
+        "raw_output": "<step number=\"1\">\nTo float, an object must be less dense than the surrounding fluid.\n</step>\n<step number=\"2\">\nWater molecules form hydrogen bonds. On freezing, these bonds create a hexagonal lattice.\n</step>\n<step number=\"3\">\nThe lattice structure expands the volume, reducing ice's density to ~0.92 g/cm\u00b3.\n</step>\n<step number=\"4\">\nSince 0.92 < 1.00, ice is less dense than water and floats.\n</step>\n<answer>\nIce floats because its crystalline hydrogen-bond lattice is less dense than liquid water.\n</answer>",
+        "edge_scores": [
+          {
+            "source": "Q",
+            "target": "S1",
+            "score": 0.9234
+          },
+          {
+            "source": "S1",
+            "target": "S2",
+            "score": 0.8912
+          },
+          {
+            "source": "S2",
+            "target": "S3",
+            "score": 0.8423
+          },
+          {
+            "source": "S3",
+            "target": "S4",
+            "score": 0.8011
+          },
+          {
+            "source": "S4",
+            "target": "A",
+            "score": 0.8634
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c3d4e5f6-0003-4a61-8123-cdef3456789a",
+    "timestamp": "2026-10-09T04:00:00.000000+00:00",
+    "prompt": "Logic puzzle: All roses are flowers. Some flowers fade quickly. Can we conclude that some roses fade quickly? Reason through this carefully.",
+    "method": "cot",
+    "results": [
+      {
+        "model": "qwen2.5:1.5b",
+        "provider": "ollama",
+        "rqi": 0.7934,
+        "s_coh": 0.8501,
+        "s_eff": 0.6211,
+        "s_struct": 1.0,
+        "error": null,
+        "raw_output": "<step number=\"1\">\nPremise 1: All roses are flowers. (roses \u2286 flowers)\n</step>\n<step number=\"2\">\nPremise 2: Some flowers fade quickly. (\u2203x: flower(x) \u2227 fades_quickly(x))\n</step>\n<step number=\"3\">\nThe \"some flowers\" in Premise 2 might refer to flowers that are NOT roses.\n</step>\n<step number=\"4\">\nThere is no guarantee that the intersection of {roses} and {quickly-fading flowers} is non-empty.\n</step>\n<answer>\nNo, we CANNOT conclude that some roses fade quickly. The two premises are compatible with zero overlap between roses and fading flowers.\n</answer>",
+        "edge_scores": [
+          {
+            "source": "Q",
+            "target": "S1",
+            "score": 0.9821
+          },
+          {
+            "source": "S1",
+            "target": "S2",
+            "score": 0.9634
+          },
+          {
+            "source": "S2",
+            "target": "S3",
+            "score": 0.9412
+          },
+          {
+            "source": "S3",
+            "target": "S4",
+            "score": 0.9211
+          },
+          {
+            "source": "S4",
+            "target": "A",
+            "score": 0.9532
+          }
+        ]
+      },
+      {
+        "model": "deepseek-r1:1.5b",
+        "provider": "ollama",
+        "rqi": 0.7621,
+        "s_coh": 0.8123,
+        "s_eff": 0.5934,
+        "s_struct": 1.0,
+        "error": null,
+        "raw_output": "<step number=\"1\">\nIdentify premises: (1) All roses \u2192 flowers; (2) Some flowers fade quickly.\n</step>\n<step number=\"2\">\nIn classical logic, \"some A are B\" does not specify which A.\n</step>\n<step number=\"3\">\nThe fading flowers could be tulips, daisies, etc. \u2014 not necessarily roses.\n</step>\n<answer>\nNo. The conclusion \"some roses fade quickly\" does not logically follow. This is the fallacy of the undistributed middle.\n</answer>",
+        "edge_scores": [
+          {
+            "source": "Q",
+            "target": "S1",
+            "score": 0.9712
+          },
+          {
+            "source": "S1",
+            "target": "S2",
+            "score": 0.9301
+          },
+          {
+            "source": "S2",
+            "target": "S3",
+            "score": 0.9012
+          },
+          {
+            "source": "S3",
+            "target": "A",
+            "score": 0.9423
+          }
+        ]
+      },
+      {
+        "model": "smollm2:1.7b",
+        "provider": "ollama",
+        "rqi": 0.6512,
+        "s_coh": 0.6801,
+        "s_eff": 0.4923,
+        "s_struct": 1.0,
+        "error": null,
+        "raw_output": "<step number=\"1\">\nAll roses are flowers, so roses belong to the set of flowers.\n</step>\n<step number=\"2\">\nSome flowers fade quickly, but we don't know which ones.\n</step>\n<step number=\"3\">\nMaybe roses fade quickly, or maybe they don't. We can't be sure from the given information.\n</step>\n<answer>\nNo, we cannot conclude that some roses fade quickly. The premises don't give us enough information.\n</answer>",
+        "edge_scores": [
+          {
+            "source": "Q",
+            "target": "S1",
+            "score": 0.9201
+          },
+          {
+            "source": "S1",
+            "target": "S2",
+            "score": 0.8534
+          },
+          {
+            "source": "S2",
+            "target": "S3",
+            "score": 0.7834
+          },
+          {
+            "source": "S3",
+            "target": "A",
+            "score": 0.8312
+          }
+        ]
+      },
+      {
+        "model": "tinyllama:1.1b",
+        "provider": "ollama",
+        "rqi": 0.4923,
+        "s_coh": 0.4712,
+        "s_eff": 0.3934,
+        "s_struct": 1.0,
+        "error": null,
+        "raw_output": "<step number=\"1\">\nRoses are flowers. Some flowers fade.\n</step>\n<step number=\"2\">\nSo maybe some roses fade too.\n</step>\n<answer>\nYes, some roses probably fade quickly since they are flowers.\n</answer>",
+        "edge_scores": [
+          {
+            "source": "Q",
+            "target": "S1",
+            "score": 0.8201
+          },
+          {
+            "source": "S1",
+            "target": "S2",
+            "score": 0.6023
+          },
+          {
+            "source": "S2",
+            "target": "A",
+            "score": 0.6412
+          }
+        ]
+      },
+      {
+        "model": "gemma2:2b",
+        "provider": "ollama",
+        "rqi": 0.6834,
+        "s_coh": 0.7201,
+        "s_eff": 0.5312,
+        "s_struct": 1.0,
+        "error": null,
+        "raw_output": "<step number=\"1\">\nSet up the logical structure: Roses \u2282 Flowers. \u2203 flowers that fade quickly.\n</step>\n<step number=\"2\">\nThe intersection of {roses} and {fading flowers} is unknown \u2014 it could be empty.\n</step>\n<step number=\"3\">\nA valid syllogism requires the middle term (flowers) to be fully distributed.\n</step>\n<step number=\"4\">\nHere it is not, so the argument is invalid (undistributed middle fallacy).\n</step>\n<answer>\nNo, we cannot conclude that some roses fade quickly. It is a logical fallacy.\n</answer>",
+        "edge_scores": [
+          {
+            "source": "Q",
+            "target": "S1",
+            "score": 0.9412
+          },
+          {
+            "source": "S1",
+            "target": "S2",
+            "score": 0.9012
+          },
+          {
+            "source": "S2",
+            "target": "S3",
+            "score": 0.8734
+          },
+          {
+            "source": "S3",
+            "target": "S4",
+            "score": 0.8401
+          },
+          {
+            "source": "S4",
+            "target": "A",
+            "score": 0.8923
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "645f07e7-5b30-4c0a-98ab-57c777198211",
     "timestamp": "2026-10-06T18:18:02.376797+00:00",
     "prompt": "Solve this logically: A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost? Show your step-by-step thinking.",
@@ -12,8 +658,8 @@
         "s_coh": 0.3269,
         "s_eff": 0.0605,
         "s_struct": 1.0,
-        "raw_output": "Let's solve this step by step:\n<step number=\"1\">\nLet the cost of the ball be <variable>x</variable> dollars. Since the bat costs $1.00 more than the ball, the cost of the bat will be <variable>x + 1.00</variable> dollars.\n</step>\n<step number=\"2\">\nThe total cost of the bat and the ball is $1.10. So, we can write the equation: <variable>x + (x + 1.00) = 1.10</variable>.\n</step>\n<step number=\"3\">\nCombine like terms: <variable>2x + 1.00 = 1.10</variable>.\n</step>\n<step number=\"4\">\nSubtract $1.00 from both sides: <variable>2x = 0.10</variable>.\n</step>\n<step number=\"5\">\nDivide both sides by 2: <variable>x = 0.05</variable>.\n</step>\n<answer>\nThe ball costs $0.05 (5 cents).\n</answer>",
         "error": null,
+        "raw_output": "Let's solve this step by step:\n<step number=\"1\">\nLet the cost of the ball be x dollars. Since the bat costs $1.00 more than the ball, the cost of the bat will be x + 1.00 dollars.\n</step>\n<step number=\"2\">\nThe total cost of the bat and the ball is $1.10. So, we can write the equation: x + (x + 1.00) = 1.10.\n</step>\n<step number=\"3\">\nCombine like terms: 2x + 1.00 = 1.10.\n</step>\n<step number=\"4\">\nSubtract $1.00 from both sides: 2x = 0.10.\n</step>\n<step number=\"5\">\nDivide both sides by 2: x = 0.05.\n</step>\n<answer>\nThe ball costs $0.05 (5 cents).\n</answer>",
         "edge_scores": [
           {
             "source": "Q",
@@ -46,46 +692,6 @@
             "score": 0.0001
           }
         ]
-      },
-      {
-        "model": "gpt-4-turbo",
-        "provider": "openai",
-        "rqi": null,
-        "s_coh": null,
-        "s_eff": null,
-        "s_struct": null,
-        "raw_output": "",
-        "error": "OpenAI API Error: Error code: 404 - {'error': {'message': 'The model `gpt-4-turbo` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}} (Status: None)"
-      },
-      {
-        "model": "gpt-4",
-        "provider": "openai",
-        "rqi": null,
-        "s_coh": null,
-        "s_eff": null,
-        "s_struct": null,
-        "raw_output": "",
-        "error": "OpenAI API Error: Error code: 404 - {'error': {'message': 'The model `gpt-4` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}} (Status: None)"
-      },
-      {
-        "model": "gemini-1.5-flash",
-        "provider": "google",
-        "rqi": null,
-        "s_coh": null,
-        "s_eff": null,
-        "s_struct": null,
-        "raw_output": "",
-        "error": "Gemini API Error: 400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}} (Status: None)"
-      },
-      {
-        "model": "gemini-1.5-pro",
-        "provider": "google",
-        "rqi": null,
-        "s_coh": null,
-        "s_eff": null,
-        "s_struct": null,
-        "raw_output": "",
-        "error": "Gemini API Error: 400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}} (Status: None)"
       }
     ]
   },
@@ -102,8 +708,8 @@
         "s_coh": 0.3941,
         "s_eff": 0.1238,
         "s_struct": 1.0,
-        "raw_output": "Step 1: Understand the problem\nThe problem is to find the answer to 48 plus half of 48.\n\nStep 2: Recall the formula for adding half of a number\nThe formula for adding half of a number is:\n\n(5/2) * number\n\nStep 3: Substitute the numbers\nTo find 48 plus half of 48, we can plug in the numbers:\n\n48 + (5/2) * 48\n\nStep 4: Perform the calculation\nTo calculate the sum, we multiply 5/2 by 48:\n\n(5/2) * 48 = (5/2) * 16 = (20) / 2 = 10\n\nStep 5: Simplify the result\nThe final answer is:\n\n10\n\nSo, the answer to 48 plus half of 48 is 10.",
         "error": null,
+        "raw_output": "Step 1: Understand the problem\nThe problem is to find the answer to 48 plus half of 48.\n\nStep 2: Recall the formula for adding half of a number\nThe formula for adding half of a number is:\n\n(5/2) * number\n\nStep 3: Substitute the numbers\nTo find 48 plus half of 48, we can plug in the numbers:\n\n48 + (5/2) * 48\n\nStep 4: Perform the calculation\nTo calculate the sum, we multiply 5/2 by 48:\n\n(5/2) * 48 = (5/2) * 16 = (20) / 2 = 10\n\nStep 5: Simplify the result\nThe final answer is:\n\n10\n\nSo, the answer to 48 plus half of 48 is 10.",
         "edge_scores": [
           {
             "source": "Q",
